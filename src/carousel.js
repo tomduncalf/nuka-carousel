@@ -84,6 +84,7 @@ const Carousel = React.createClass({
       React.PropTypes.number
     ]),
     speed: React.PropTypes.number,
+    touching: React.PropTypes.bool,
     vertical: React.PropTypes.bool,
     width: React.PropTypes.string,
     wrapAround: React.PropTypes.bool,
@@ -214,6 +215,10 @@ const Carousel = React.createClass({
 
   getTouchEvents() {
     var self = this;
+
+    if (this.props.touching === false) {
+      return null;
+    }
 
     return {
       onTouchStart(e) {
